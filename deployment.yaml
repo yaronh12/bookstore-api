@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-app
+  namespace: yaron-test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: go-app
+  template:
+    metadata:
+      labels:
+        app: go-app
+    spec:
+      containers:
+      - name: go-app
+        image: quay.io/rh-ee-yhod/mygoapp:0.0.8
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_HOST
+          value: "postgresql-service"
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_USER
+          value: "postgres"
+        - name: DB_PASSWORD
+          value: "password"
+        - name: DB_NAME
+          value: "bookstore"
+        - name: PORT
+          value: "8080"
