@@ -217,4 +217,3 @@ curl -X POST "http://$APP_URL/createBook" \
 
 ---
 
-**Built with ❤️ using Go, PostgreSQL, and OpenShift** 🚀📚
